@@ -63,13 +63,13 @@ if [[ -f "${data_dir}${time_file}" ]]; then
         xp=$(cat "${data_dir}${xp_dfile}")
         xpd=$((xp*5/$goal)) # point gained
         if [[ $xp -lt $goal ]]; then
-            message="Failed dayly challange of ${data_dir}${time_file} Penality: -1pt"
+            message="Failed dayly challange of $(cat ${data_dir}${time_file}) Penality: -1pt"
             echo -e "Message:\033[0;32m ${message}\033[0m"
             echo "$(date +%D): ${message}\033[0m" >> "${data_dir}${history_file}"
             pt=$((pt-1))
         else
             #xpd should be rounded
-            message="Completed dayly challange of ${data_dir}${time_file} Reward: +${xpd}pt"
+            message="Completed dayly challange of $(cat ${data_dir}${time_file}) Reward: +${xpd}pt"
             echo "$(date +%D): ${message}\033[0m" >> "${data_dir}${history_file}"
             echo -e "Message:\033[0;32m ${message}\033[0m"
             pt=$((pt+xpd))
@@ -78,11 +78,11 @@ if [[ -f "${data_dir}${time_file}" ]]; then
         squat=$(cat "${data_dir}${squat_dfile}")
         situp=$(cat "${data_dir}${situp_dfile}")
         # add past dayly to total
-        push_total=$(push_total+push)
+        push_total=$((push_total+push))
         echo "$push_total" > ${data_dir}$push_file
-        squat_total=$(squat_total+squat)
+        squat_total=$((squat_total+squat))
         echo "$squat_total" > ${data_dir}$squat_file
-        situp_total=$(situp_total+situp)
+        situp_total=$((situp_total+situp))
         echo "$situp_total" > "${data_dir}${situp_file}"
 
         xp=0
@@ -135,7 +135,7 @@ if [[ $pt -gt $level*2 ]]; then
     level=$((level+1))
     ngoa$((goal+5))
     #update the goal
-    echo "ngoal" > "${data_dir}${goal_file}"
+    echo "$goal" > "${data_dir}${goal_file}"
     echo "NOTIFICATION: Level UP! you are now Level: $level"
     echo "$(date +%D): Level UP! you are now Level: $level" >> "${data_dir}${history_file}"
 fi
@@ -156,7 +156,7 @@ if [[ $choice == "STATS" ]]; then
     if [[ $xp -ge $goal ]]; then
         echo -e "XP: [\033[0;32m${xp}\033[0m/${goal}]"
     else
-        echo "XP: [\033[0;31m${xp}\033[0m/${goal}]"
+        echo -e "XP: [\033[0;31m${xp}\033[0m/${goal}]"
     fi
 
     echo "PUSH-UP TODAY: $push"
