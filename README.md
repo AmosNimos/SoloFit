@@ -2,6 +2,8 @@
 SoloFit: A Bash script inspired by solo leveling that turns exercise into a motivating game, allowing you to level up by tracking your daily exercise progress and accumulating experience points.
 
 ![Daily Quest](https://static.wikia.nocookie.net/solo-leveling/images/c/c7/DailyQuest1.jpg/revision/latest/scale-to-width-down/350?cb=20210815155422)
+![Reward](https://github.com/AmosNimos/SoloFit/blob/main/reward.png)
+![Reward](https://github.com/AmosNimos/SoloFit/blob/main/Screenshot%20from%202024-03-23%2022-22-27.png)
 
 ## Disclaimer
 
